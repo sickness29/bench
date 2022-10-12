@@ -80,7 +80,6 @@ exports.handler = (event, context) => {
   } else if (event.body.channel_post && event.body.channel_post.chat && event.body.channel_post.chat.id) {
     chatId = event.body.channel_post.chat.id;
   }
-
   if (chatId) {
     processCommand.then((response) => {
       const processTelegram = sendMessageToTelegram(chatId, response);
@@ -105,5 +104,5 @@ exports.handler = (event, context) => {
     });
   }
 
-  return processCommand;
+  return {statusCode: 200};
 };
